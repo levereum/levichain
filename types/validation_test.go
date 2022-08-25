@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/evmos/ethermint/tests"
+	"github.com/levichain/levichain/tests"
 	"github.com/stretchr/testify/require"
 )
 

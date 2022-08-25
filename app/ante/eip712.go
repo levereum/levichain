@@ -15,10 +15,10 @@ import (
 
 	ethcrypto "github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/crypto/secp256k1"
-	"github.com/evmos/ethermint/crypto/ethsecp256k1"
-	"github.com/evmos/ethermint/ethereum/eip712"
-	ethermint "github.com/evmos/ethermint/types"
-	evmtypes "github.com/evmos/ethermint/x/evm/types"
+	"github.com/levichain/levichain/crypto/ethsecp256k1"
+	"github.com/levichain/levichain/ethereum/eip712"
+	ethermint "github.com/levichain/levichain/types"
+	evmtypes "github.com/levichain/levichain/x/evm/types"
 )
 
 var ethermintCodec codec.ProtoCodecMarshaler

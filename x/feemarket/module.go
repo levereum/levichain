@@ -19,10 +19,10 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
 
-	"github.com/evmos/ethermint/x/feemarket/client/cli"
-	"github.com/evmos/ethermint/x/feemarket/keeper"
-	"github.com/evmos/ethermint/x/feemarket/simulation"
-	"github.com/evmos/ethermint/x/feemarket/types"
+	"github.com/levichain/levichain/x/feemarket/client/cli"
+	"github.com/levichain/levichain/x/feemarket/keeper"
+	"github.com/levichain/levichain/x/feemarket/simulation"
+	"github.com/levichain/levichain/x/feemarket/types"
 )
 
 var (

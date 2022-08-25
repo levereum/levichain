@@ -19,13 +19,13 @@ import (
 	"github.com/stretchr/testify/suite"
 	tmrpctypes "github.com/tendermint/tendermint/rpc/core/types"
 
-	"github.com/evmos/ethermint/app"
-	"github.com/evmos/ethermint/crypto/hd"
-	"github.com/evmos/ethermint/encoding"
-	"github.com/evmos/ethermint/indexer"
-	"github.com/evmos/ethermint/rpc/backend/mocks"
-	rpctypes "github.com/evmos/ethermint/rpc/types"
-	evmtypes "github.com/evmos/ethermint/x/evm/types"
+	"github.com/levichain/levichain/app"
+	"github.com/levichain/levichain/crypto/hd"
+	"github.com/levichain/levichain/encoding"
+	"github.com/levichain/levichain/indexer"
+	"github.com/levichain/levichain/rpc/backend/mocks"
+	rpctypes "github.com/levichain/levichain/rpc/types"
+	evmtypes "github.com/levichain/levichain/x/evm/types"
 )
 
 type BackendTestSuite struct {
@@ -44,7 +44,7 @@ func (suite *BackendTestSuite) SetupTest() {
 
 	baseDir := suite.T().TempDir()
 	nodeDirName := fmt.Sprintf("node")
-	clientDir := filepath.Join(baseDir, nodeDirName, "evmoscli")
+	clientDir := filepath.Join(baseDir, nodeDirName, "levcli")
 	keyRing, err := suite.generateTestKeyring(clientDir)
 	if err != nil {
 		panic(err)

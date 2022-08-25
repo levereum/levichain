@@ -49,13 +49,13 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/genutil"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	"github.com/evmos/ethermint/crypto/hd"
-	"github.com/evmos/ethermint/encoding"
-	"github.com/evmos/ethermint/server/config"
-	ethermint "github.com/evmos/ethermint/types"
-	evmtypes "github.com/evmos/ethermint/x/evm/types"
+	"github.com/levichain/levichain/crypto/hd"
+	"github.com/levichain/levichain/encoding"
+	"github.com/levichain/levichain/server/config"
+	ethermint "github.com/levichain/levichain/types"
+	evmtypes "github.com/levichain/levichain/x/evm/types"
 
-	"github.com/evmos/ethermint/app"
+	"github.com/levichain/levichain/app"
 )
 
 // package-wide network lock to only allow one test network at a time
@@ -332,8 +332,8 @@ func New(l Logger, baseDir string, cfg Config) (*Network, error) {
 		ctx.Logger = logger
 
 		nodeDirName := fmt.Sprintf("node%d", i)
-		nodeDir := filepath.Join(network.BaseDir, nodeDirName, "evmosd")
-		clientDir := filepath.Join(network.BaseDir, nodeDirName, "evmoscli")
+		nodeDir := filepath.Join(network.BaseDir, nodeDirName, "levd")
+		clientDir := filepath.Join(network.BaseDir, nodeDirName, "levcli")
 		gentxsDir := filepath.Join(network.BaseDir, "gentxs")
 
 		err := os.MkdirAll(filepath.Join(nodeDir, "config"), 0o750)
