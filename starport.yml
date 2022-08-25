@@ -1,18 +1,18 @@
 accounts:
   - name: alice
-    coins: ["100000000uatom", "100000000000000000000aphoton"]
+    coins: ["100000000uatom", "100000000000000000000alevi"]
   - name: bob
-    coins: ["5000000000000aphoton"]
+    coins: ["5000000000000alevi"]
   - name: faucet
-    coins: ["1000000000000000000000000000aphoton"]
+    coins: ["1000000000000000000000000000alevi"]
 validator:
   name: alice
-  staked: "100000000000000000000aphoton"
+  staked: "100000000000000000000alevi"
 faucet:
   port: 4500
   name: "faucet"
-  coins: ["1000000000000000000000000000aphoton"]
-  coins_max: ["100000000aphoton"]
+  coins: ["1000000000000000000000000000alevi"]
+  coins_max: ["100000000alevi"]
 build:
   binary: "levid"
 init:
@@ -28,18 +28,18 @@ genesis:
   app_state:
     staking:
       params:
-        bond_denom: "aphoton"
+        bond_denom: "alevi"
     mint:
       params:
-        mint_denom: "aphoton"
+        mint_denom: "alevi"
     crisis:
       constant_fee:
-        denom: "aphoton"
+        denom: "alevi"
     gov:
       deposit_params:
         min_deposit:
           - amount: "10000000"
-            denom: "aphoton"
+            denom: "alevi"
     evm:
       params:
-        evm_denom: "aphoton"
+        evm_denom: "alevi"

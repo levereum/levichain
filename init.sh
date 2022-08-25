@@ -27,11 +27,11 @@ levid keys add $KEY --keyring-backend $KEYRING --algo $KEYALGO
 # Set moniker and chain-id for Ethermint (Moniker can be anything, chain-id must be an integer)
 levid init $MONIKER --chain-id $CHAINID
 
-# Change parameter token denominations to aphoton
-cat $HOME/.levid/config/genesis.json | jq '.app_state["staking"]["params"]["bond_denom"]="aphoton"' > $HOME/.levid/config/tmp_genesis.json && mv $HOME/.levid/config/tmp_genesis.json $HOME/.levid/config/genesis.json
-cat $HOME/.levid/config/genesis.json | jq '.app_state["crisis"]["constant_fee"]["denom"]="aphoton"' > $HOME/.levid/config/tmp_genesis.json && mv $HOME/.levid/config/tmp_genesis.json $HOME/.levid/config/genesis.json
-cat $HOME/.levid/config/genesis.json | jq '.app_state["gov"]["deposit_params"]["min_deposit"][0]["denom"]="aphoton"' > $HOME/.levid/config/tmp_genesis.json && mv $HOME/.levid/config/tmp_genesis.json $HOME/.levid/config/genesis.json
-cat $HOME/.levid/config/genesis.json | jq '.app_state["mint"]["params"]["mint_denom"]="aphoton"' > $HOME/.levid/config/tmp_genesis.json && mv $HOME/.levid/config/tmp_genesis.json $HOME/.levid/config/genesis.json
+# Change parameter token denominations to alevi
+cat $HOME/.levid/config/genesis.json | jq '.app_state["staking"]["params"]["bond_denom"]="alevi"' > $HOME/.levid/config/tmp_genesis.json && mv $HOME/.levid/config/tmp_genesis.json $HOME/.levid/config/genesis.json
+cat $HOME/.levid/config/genesis.json | jq '.app_state["crisis"]["constant_fee"]["denom"]="alevi"' > $HOME/.levid/config/tmp_genesis.json && mv $HOME/.levid/config/tmp_genesis.json $HOME/.levid/config/genesis.json
+cat $HOME/.levid/config/genesis.json | jq '.app_state["gov"]["deposit_params"]["min_deposit"][0]["denom"]="alevi"' > $HOME/.levid/config/tmp_genesis.json && mv $HOME/.levid/config/tmp_genesis.json $HOME/.levid/config/genesis.json
+cat $HOME/.levid/config/genesis.json | jq '.app_state["mint"]["params"]["mint_denom"]="alevi"' > $HOME/.levid/config/tmp_genesis.json && mv $HOME/.levid/config/tmp_genesis.json $HOME/.levid/config/genesis.json
 
 # Set gas limit in genesis
 cat $HOME/.levid/config/genesis.json | jq '.consensus_params["block"]["max_gas"]="10000000"' > $HOME/.levid/config/tmp_genesis.json && mv $HOME/.levid/config/tmp_genesis.json $HOME/.levid/config/genesis.json
@@ -68,10 +68,10 @@ if [[ $1 == "pending" ]]; then
 fi
 
 # Allocate genesis accounts (cosmos formatted addresses)
-levid add-genesis-account $KEY 100000000000000000000000000aphoton --keyring-backend $KEYRING
+levid add-genesis-account $KEY 100000000000000000000000000alevi --keyring-backend $KEYRING
 
 # Sign genesis transaction
-levid gentx $KEY 1000000000000000000000aphoton --keyring-backend $KEYRING --chain-id $CHAINID
+levid gentx $KEY 1000000000000000000000alevi --keyring-backend $KEYRING --chain-id $CHAINID
 
 # Collect genesis tx
 levid collect-gentxs
@@ -84,4 +84,4 @@ if [[ $1 == "pending" ]]; then
 fi
 
 # Start the node (remove the --pruning=nothing flag if historical queries are not needed)
-levid start --pruning=nothing --evm.tracer=json $TRACE --log_level $LOGLEVEL --minimum-gas-prices=0.0001aphoton --json-rpc.api eth,txpool,personal,net,debug,web3,miner --api.enable
+levid start --pruning=nothing --evm.tracer=json $TRACE --log_level $LOGLEVEL --minimum-gas-prices=0.0001alevi --json-rpc.api eth,txpool,personal,net,debug,web3,miner --api.enable

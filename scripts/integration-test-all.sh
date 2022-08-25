@@ -70,7 +70,7 @@ init_func() {
     "$PWD"/build/levid keys add $KEY"$i" --keyring-backend test --home "$DATA_DIR$i" --no-backup --algo "eth_secp256k1"
     "$PWD"/build/levid init $MONIKER --chain-id $CHAINID --home "$DATA_DIR$i"
     "$PWD"/build/levid add-genesis-account \
-    "$("$PWD"/build/levid keys show "$KEY$i" --keyring-backend test -a --home "$DATA_DIR$i")" 1000000000000000000aphoton,1000000000000000000stake \
+    "$("$PWD"/build/levid keys show "$KEY$i" --keyring-backend test -a --home "$DATA_DIR$i")" 1000000000000000000alevi,1000000000000000000stake \
     --keyring-backend test --home "$DATA_DIR$i"
     "$PWD"/build/levid gentx "$KEY$i" 1000000000000000000stake --chain-id $CHAINID --keyring-backend test --home "$DATA_DIR$i"
     "$PWD"/build/levid collect-gentxs --home "$DATA_DIR$i"

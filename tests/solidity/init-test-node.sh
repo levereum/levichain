@@ -42,14 +42,14 @@ cat $HOME/.levid/config/genesis.json | jq '.consensus_params["block"]["max_gas"]
 sed -i -e '/^timeout_commit =/ s/= .*/= "850ms"/' $HOME/.levid/config/config.toml
 
 # Allocate genesis accounts (cosmos formatted addresses)
-levid add-genesis-account "$(levid keys show $VAL_KEY   -a --keyring-backend test)" 1000000000000000000000aphoton,1000000000000000000stake --keyring-backend test
-levid add-genesis-account "$(levid keys show $USER1_KEY -a --keyring-backend test)" 1000000000000000000000aphoton,1000000000000000000stake --keyring-backend test
-levid add-genesis-account "$(levid keys show $USER2_KEY -a --keyring-backend test)" 1000000000000000000000aphoton,1000000000000000000stake --keyring-backend test
-levid add-genesis-account "$(levid keys show $USER3_KEY -a --keyring-backend test)" 1000000000000000000000aphoton,1000000000000000000stake --keyring-backend test
-levid add-genesis-account "$(levid keys show $USER4_KEY -a --keyring-backend test)" 1000000000000000000000aphoton,1000000000000000000stake --keyring-backend test
+levid add-genesis-account "$(levid keys show $VAL_KEY   -a --keyring-backend test)" 1000000000000000000000alevi,1000000000000000000stake --keyring-backend test
+levid add-genesis-account "$(levid keys show $USER1_KEY -a --keyring-backend test)" 1000000000000000000000alevi,1000000000000000000stake --keyring-backend test
+levid add-genesis-account "$(levid keys show $USER2_KEY -a --keyring-backend test)" 1000000000000000000000alevi,1000000000000000000stake --keyring-backend test
+levid add-genesis-account "$(levid keys show $USER3_KEY -a --keyring-backend test)" 1000000000000000000000alevi,1000000000000000000stake --keyring-backend test
+levid add-genesis-account "$(levid keys show $USER4_KEY -a --keyring-backend test)" 1000000000000000000000alevi,1000000000000000000stake --keyring-backend test
 
 # Sign genesis transaction
-levid gentx $VAL_KEY 1000000000000000000stake --amount=1000000000000000000000aphoton --chain-id $CHAINID --keyring-backend test
+levid gentx $VAL_KEY 1000000000000000000stake --amount=1000000000000000000000alevi --chain-id $CHAINID --keyring-backend test
 
 # Collect genesis tx
 levid collect-gentxs

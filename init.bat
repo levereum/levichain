@@ -38,11 +38,11 @@ levid keys add %KEY% --keyring-backend %KEYRING% --algo %KEYALGO%
 rem Set moniker and chain-id for Ethermint (Moniker can be anything, chain-id must be an integer)
 levid init %MONIKER% --chain-id %CHAINID% 
 
-rem Change parameter token denominations to aphoton
-cat %GENESIS% | jq ".app_state[\"staking\"][\"params\"][\"bond_denom\"]=\"aphoton\""   >   %TMPGENESIS% && move %TMPGENESIS% %GENESIS%
-cat %GENESIS% | jq ".app_state[\"crisis\"][\"constant_fee\"][\"denom\"]=\"aphoton\"" > %TMPGENESIS% && move %TMPGENESIS% %GENESIS%
-cat %GENESIS% | jq ".app_state[\"gov\"][\"deposit_params\"][\"min_deposit\"][0][\"denom\"]=\"aphoton\"" > %TMPGENESIS% && move %TMPGENESIS% %GENESIS%
-cat %GENESIS% | jq ".app_state[\"mint\"][\"params\"][\"mint_denom\"]=\"aphoton\"" > %TMPGENESIS% && move %TMPGENESIS% %GENESIS%
+rem Change parameter token denominations to alevi
+cat %GENESIS% | jq ".app_state[\"staking\"][\"params\"][\"bond_denom\"]=\"alevi\""   >   %TMPGENESIS% && move %TMPGENESIS% %GENESIS%
+cat %GENESIS% | jq ".app_state[\"crisis\"][\"constant_fee\"][\"denom\"]=\"alevi\"" > %TMPGENESIS% && move %TMPGENESIS% %GENESIS%
+cat %GENESIS% | jq ".app_state[\"gov\"][\"deposit_params\"][\"min_deposit\"][0][\"denom\"]=\"alevi\"" > %TMPGENESIS% && move %TMPGENESIS% %GENESIS%
+cat %GENESIS% | jq ".app_state[\"mint\"][\"params\"][\"mint_denom\"]=\"alevi\"" > %TMPGENESIS% && move %TMPGENESIS% %GENESIS%
 
 rem increase block time (?)
 cat %GENESIS% | jq ".consensus_params[\"block\"][\"time_iota_ms\"]=\"30000\"" > %TMPGENESIS% && move %TMPGENESIS% %GENESIS%
@@ -54,10 +54,10 @@ rem setup
 sed -i "s/create_empty_blocks = true/create_empty_blocks = false/g" %ETHCONFIG%
 
 rem Allocate genesis accounts (cosmos formatted addresses)
-levid add-genesis-account %KEY% 100000000000000000000000000aphoton --keyring-backend %KEYRING%
+levid add-genesis-account %KEY% 100000000000000000000000000alevi --keyring-backend %KEYRING%
 
 rem Sign genesis transaction
-levid gentx %KEY% 1000000000000000000000aphoton --keyring-backend %KEYRING% --chain-id %CHAINID%
+levid gentx %KEY% 1000000000000000000000alevi --keyring-backend %KEYRING% --chain-id %CHAINID%
 
 rem Collect genesis tx
 levid collect-gentxs
@@ -68,4 +68,4 @@ levid validate-genesis
 
 
 rem Start the node (remove the --pruning=nothing flag if historical queries are not needed)
-levid start --pruning=nothing %TRACE% --log_level %LOGLEVEL% --minimum-gas-prices=0.0001aphoton
+levid start --pruning=nothing %TRACE% --log_level %LOGLEVEL% --minimum-gas-prices=0.0001alevi
