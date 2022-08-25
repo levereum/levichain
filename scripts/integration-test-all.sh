@@ -17,7 +17,7 @@ RPC_PORT="854"
 IP_ADDR="0.0.0.0"
 
 KEY="mykey"
-CHAINID="ethermint_9000-1"
+CHAINID="levi_8000-1"
 MONIKER="mymoniker"
 
 ## default port prefixes for levid

@@ -1,6 +1,6 @@
 {
   dotenv: '../../../scripts/.env',
-  'ethermint_9000-1': {
+  'levi_8000-1': {
     cmd: 'levid',
     'start-flags': '--trace',
     config: {

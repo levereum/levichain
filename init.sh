@@ -1,8 +1,8 @@
 #!/bin/bash
 
 KEY="mykey"
-CHAINID="ethermint_9000-1"
-MONIKER="localtestnet"
+CHAINID="levi_8000-1"
+MONIKER="testnet"
 KEYRING="test"
 KEYALGO="eth_secp256k1"
 LOGLEVEL="info"
