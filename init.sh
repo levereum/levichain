@@ -2,7 +2,7 @@
 
 KEY="mykey"
 CHAINID="levi_8000-1"
-MONIKER="testnet"
+MONIKER="levi_testnet"
 KEYRING="test"
 KEYALGO="eth_secp256k1"
 LOGLEVEL="info"
