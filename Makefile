@@ -7,7 +7,7 @@ TMVERSION := $(shell go list -m github.com/tendermint/tendermint | sed 's:.* ::'
 COMMIT := $(shell git log -1 --format='%H')
 LEDGER_ENABLED ?= true
 BINDIR ?= $(GOPATH)/bin
-ETHERMINT_BINARY = ethermintd
+ETHERMINT_BINARY = levid
 ETHERMINT_DIR = ethermint
 BUILDDIR ?= $(CURDIR)/build
 SIMAPP = ./app
@@ -141,7 +141,7 @@ docker-build:
 	docker create --name ethermint -t -i tharsis/ethermint:latest ethermint
 	# move the binaries to the ./build directory
 	mkdir -p ./build/
-	docker cp ethermint:/usr/bin/ethermintd ./build/
+	docker cp ethermint:/usr/bin/levid ./build/
 
 $(MOCKS_DIR):
 	mkdir -p $(MOCKS_DIR)
@@ -508,13 +508,13 @@ ifeq ($(OS),Windows_NT)
 	mkdir localnet-setup &
 	@$(MAKE) localnet-build
 
-	IF not exist "build/node0/$(ETHERMINT_BINARY)/config/genesis.json" docker run --rm -v $(CURDIR)/build\ethermint\Z ethermintd/node "./ethermintd testnet --v 4 -o /ethermint --keyring-backend=test --ip-addresses ethermintdnode0,ethermintdnode1,ethermintdnode2,ethermintdnode3"
+	IF not exist "build/node0/$(ETHERMINT_BINARY)/config/genesis.json" docker run --rm -v $(CURDIR)/build\ethermint\Z levid/node "./levid testnet --v 4 -o /ethermint --keyring-backend=test --ip-addresses levidnode0,levidnode1,levidnode2,levidnode3"
 	docker-compose up -d
 else
 	mkdir -p localnet-setup
 	@$(MAKE) localnet-build
 
-	if ! [ -f localnet-setup/node0/$(ETHERMINT_BINARY)/config/genesis.json ]; then docker run --rm -v $(CURDIR)/localnet-setup:/ethermint:Z ethermintd/node "./ethermintd testnet --v 4 -o /ethermint --keyring-backend=test --ip-addresses ethermintdnode0,ethermintdnode1,ethermintdnode2,ethermintdnode3"; fi
+	if ! [ -f localnet-setup/node0/$(ETHERMINT_BINARY)/config/genesis.json ]; then docker run --rm -v $(CURDIR)/localnet-setup:/ethermint:Z levid/node "./levid testnet --v 4 -o /ethermint --keyring-backend=test --ip-addresses levidnode0,levidnode1,levidnode2,levidnode3"; fi
 	docker-compose up -d
 endif
 
@@ -531,15 +531,15 @@ localnet-clean:
 localnet-unsafe-reset:
 	docker-compose down
 ifeq ($(OS),Windows_NT)
-	@docker run --rm -v $(CURDIR)\localnet-setup\node0\ethermitd:ethermint\Z ethermintd/node "./ethermintd unsafe-reset-all --home=/ethermint"
-	@docker run --rm -v $(CURDIR)\localnet-setup\node1\ethermitd:ethermint\Z ethermintd/node "./ethermintd unsafe-reset-all --home=/ethermint"
-	@docker run --rm -v $(CURDIR)\localnet-setup\node2\ethermitd:ethermint\Z ethermintd/node "./ethermintd unsafe-reset-all --home=/ethermint"
-	@docker run --rm -v $(CURDIR)\localnet-setup\node3\ethermitd:ethermint\Z ethermintd/node "./ethermintd unsafe-reset-all --home=/ethermint"
+	@docker run --rm -v $(CURDIR)\localnet-setup\node0\ethermitd:ethermint\Z levid/node "./levid unsafe-reset-all --home=/ethermint"
+	@docker run --rm -v $(CURDIR)\localnet-setup\node1\ethermitd:ethermint\Z levid/node "./levid unsafe-reset-all --home=/ethermint"
+	@docker run --rm -v $(CURDIR)\localnet-setup\node2\ethermitd:ethermint\Z levid/node "./levid unsafe-reset-all --home=/ethermint"
+	@docker run --rm -v $(CURDIR)\localnet-setup\node3\ethermitd:ethermint\Z levid/node "./levid unsafe-reset-all --home=/ethermint"
 else
-	@docker run --rm -v $(CURDIR)/localnet-setup/node0/ethermitd:/ethermint:Z ethermintd/node "./ethermintd unsafe-reset-all --home=/ethermint"
-	@docker run --rm -v $(CURDIR)/localnet-setup/node1/ethermitd:/ethermint:Z ethermintd/node "./ethermintd unsafe-reset-all --home=/ethermint"
-	@docker run --rm -v $(CURDIR)/localnet-setup/node2/ethermitd:/ethermint:Z ethermintd/node "./ethermintd unsafe-reset-all --home=/ethermint"
-	@docker run --rm -v $(CURDIR)/localnet-setup/node3/ethermitd:/ethermint:Z ethermintd/node "./ethermintd unsafe-reset-all --home=/ethermint"
+	@docker run --rm -v $(CURDIR)/localnet-setup/node0/ethermitd:/ethermint:Z levid/node "./levid unsafe-reset-all --home=/ethermint"
+	@docker run --rm -v $(CURDIR)/localnet-setup/node1/ethermitd:/ethermint:Z levid/node "./levid unsafe-reset-all --home=/ethermint"
+	@docker run --rm -v $(CURDIR)/localnet-setup/node2/ethermitd:/ethermint:Z levid/node "./levid unsafe-reset-all --home=/ethermint"
+	@docker run --rm -v $(CURDIR)/localnet-setup/node3/ethermitd:/ethermint:Z levid/node "./levid unsafe-reset-all --home=/ethermint"
 endif
 
 # Clean testnet

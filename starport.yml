@@ -14,9 +14,9 @@ faucet:
   coins: ["1000000000000000000000000000aphoton"]
   coins_max: ["100000000aphoton"]
 build:
-  binary: "ethermintd"
+  binary: "levid"
 init:
-  home: "$HOME/.ethermintd"
+  home: "$HOME/.levid"
   app:
     api:
       enable: true

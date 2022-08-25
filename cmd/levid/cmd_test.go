@@ -11,11 +11,11 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
 
 	"github.com/levichain/levichain/app"
-	ethermintd "github.com/levichain/levichain/cmd/ethermintd"
+	levid "github.com/levichain/levichain/cmd/levid"
 )
 
 func TestInitCmd(t *testing.T) {
-	rootCmd, _ := ethermintd.NewRootCmd()
+	rootCmd, _ := levid.NewRootCmd()
 	rootCmd.SetArgs([]string{
 		"init",          // Test the init cmd
 		"etherminttest", // Moniker

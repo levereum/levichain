@@ -12,7 +12,7 @@ A user can query and interact with the `feemarket` module using the CLI.
 The `query` commands allow users to query `feemarket` state.
 
 ```go
-ethermintd query feemarket --help
+levid query feemarket --help
 ```
 
 #### Base Fee
@@ -20,13 +20,13 @@ ethermintd query feemarket --help
 The `base-fee` command allows users to query the block base fee by height.
 
 ```
-ethermintd query feemarket base-fee [height] [flags]
+levid query feemarket base-fee [height] [flags]
 ```
 
 Example:
 
 ```
-ethermintd query feemarket base-fee 5...
+levid query feemarket base-fee 5...
 ```
 
 Example Output:
@@ -40,13 +40,13 @@ base_fee: "512908936"
 The `block-gas` command allows users to query the block gas by height.
 
 ```
-ethermintd query feemarket block-gas [height] [flags]
+levid query feemarket block-gas [height] [flags]
 ```
 
 Example:
 
 ```
-ethermintd query feemarket block-gas 5...
+levid query feemarket block-gas 5...
 ```
 
 Example Output:
@@ -60,13 +60,13 @@ gas: "21000"
 The `params` command allows users to query the module params.
 
 ```
-ethermintd query params subspace [subspace] [key] [flags]
+levid query params subspace [subspace] [key] [flags]
 ```
 
 Example:
 
 ```
-ethermintd query params subspace feemarket ElasticityMultiplier ...
+levid query params subspace feemarket ElasticityMultiplier ...
 ```
 
 Example Output:

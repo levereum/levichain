@@ -24,7 +24,7 @@ RUN apk add --update ca-certificates jq
 WORKDIR /
 
 # Copy over binaries from the build-env
-COPY --from=build-env /go/src/github.com/levichain/levichain/build/ethermintd /usr/bin/ethermintd
+COPY --from=build-env /go/src/github.com/levichain/levichain/build/levid /usr/bin/levid
 
-# Run ethermintd by default
-CMD ["ethermintd"]
+# Run levid by default
+CMD ["levid"]
