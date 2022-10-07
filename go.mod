@@ -35,7 +35,7 @@ require (
 	golang.org/x/net v0.0.0-20220617184016-355a448f1bc9
 	golang.org/x/text v0.3.7
 	google.golang.org/genproto v0.0.0-20220628213854-d9e0b6570c03
-	google.golang.org/grpc v1.49.0
+	google.golang.org/grpc v1.50.0
 	google.golang.org/protobuf v1.28.1
 	sigs.k8s.io/yaml v1.3.0
 )
